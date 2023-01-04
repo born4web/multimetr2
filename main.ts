@@ -1,39 +1,48 @@
-function zobraz_teplotu () {
+function zobraz_teplotu() {
+    
     teplota = input.temperature()
-    basic.showString("" + teplota)
+    basic.showString("" + ("" + teplota))
     basic.pause(2000)
     basic.clearScreen()
 }
-function zobraz_svetlo () {
+
+function zobraz_svetlo() {
+    
     svetlost = input.lightLevel()
-    basic.showString("" + svetlost)
+    basic.showString("" + ("" + svetlost))
     basic.pause(2000)
     basic.clearScreen()
 }
-input.onButtonPressed(Button.A, function () {
+
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    
     aktivni_prikaz += 1
     if (prikazy[aktivni_prikaz]) {
         aktivni_prikaz = 0
     }
+    
     basic.showString("")
     basic.pause(1000)
     basic.clearScreen()
 })
-input.onButtonPressed(Button.B, function () {
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
     if (aktivni_prikaz == 0) {
         zobraz_teplotu()
     }
+    
     if (aktivni_prikaz == 1) {
         zobraz_svetlo()
     }
+    
     if (aktivni_prikaz == 2) {
         basic.showString("TONIK")
     }
+    
 })
 let aktivni_prikaz = 0
 let svetlost = 0
 let teplota = 0
-let prikazy: string[] = []
+let prikazy : string[] = []
 prikazy = ["T", "S", "J"]
 basic.showIcon(IconNames.Happy)
 basic.pause(1000)
